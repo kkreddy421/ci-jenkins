@@ -73,6 +73,28 @@ pipeline {
               
         }
 
+        stage("Nexus upload"){
+            steps{
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
+                    groupId: 'QA',
+                    version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+                    repository: "${RELEASE_REPO}",
+                    credentialsId: ${NEXUS_LOGIN},
+                    artifacts: [
+                        [
+                         artifactId: "vprofile",
+                         classifier: '',
+                         file: 'target/vprofile-v2.war',
+                         type: 'war'   
+                        ]
+                    ]
+                )
+            }
+        }
+
         }
     }
 
