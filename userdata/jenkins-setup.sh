@@ -1,4 +1,5 @@
 #!/bin/bash
+
 sudo apt update
 sudo apt install openjdk-11-jdk -y
 sudo apt install maven -y
@@ -11,4 +12,4 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 
 sudo apt-get update
 sudo apt-get install jenkins -y
-###
+######################
